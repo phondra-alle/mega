@@ -1,0 +1,101 @@
+---
+layout: runbook
+title: '#4471 reviewed: two mechanisms and unresolved reports'
+owner: exercise analysis
+status: reviewed
+reviewed: '2026-10-28'
+signature: mega-s01e03-analysis
+---
+
+<script>
+  import Review4471 from '#lib/kb/Review4471.svelte';
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+## What the desk should do
+
+Do not treat every report merged into #4471 as the same verified defect.
+Separate the shared-parser path from the booking-v3 form-hint path, and keep the
+flagged exceptions open for investigation. Matching subjects are not enough.
+
+This review describes the export dated 4 October 2026. It does not establish
+the current queue state, a shipped fix, or a production reproduction.
+The work items below are published proposals, not confirmed production fixes:
+
+- [Parser input interpretation — 374 allocated reports](https://github.com/phondra-alle/mega/issues/1)
+- [booking-v3 form hint — 33 reports](https://github.com/phondra-alle/mega/issues/2)
+- [Unresolved symptoms — 5 reports to investigate](https://github.com/phondra-alle/mega/issues/3)
+
+## Count reports once, then inspect their meaning
+
+<Review4471 />
+
+## Two mechanisms described by the export
+
+### Shared parser
+
+The supplied logic says the shared parser reads numeric dates month-first while
+the tenant uses day-first dates. R-41200 describes 7 April becoming 4 July;
+R-41203 describes 2 December becoming 12 February.
+
+The required outcome is agreement between the intended date and the application's
+interpretation. This export does not include the production parser.
+
+### booking-v3 form hint
+
+The supplied form hint says `MM/DD/YYYY`, but the form reads input in the tenant's
+day-first order. A person following that instruction can obtain the wrong date.
+Examples include R-41230, R-41241 and R-41251.
+
+This mechanism applies to form submissions for the relevant booking-v3 tenants.
+It is not established merely by a matching subject, browser locale, or intake tag.
+The displayed instruction and the input interpretation must agree.
+
+## Why the existing page is misleading
+
+The [existing incident page](/kb/incidents/4471) says one issue and one queued fix.
+Its own component computes a more complicated picture:
+
+<CauseTable ticket={4471} />
+
+That component classifies by tenant and channel. It does not inspect report bodies.
+Its parser label must not be read as proof that every description is a month/day
+swap, and its footnote is not a diagnosis of the exceptional reports.
+
+## Received is not the same as merged
+
+Reports began arriving on 1 April 2026; the first recorded merges occurred on
+2 July 2026. The merge activity is not the start of the incident.
+
+<QueueTimeline ticket={4471} />
+
+## A safer triage proposal
+
+The [accepted subject-only decision](/kb/decisions/0001-dedupe-by-subject) and
+[triage instructions](/kb/triage/dedupe) are historical context, not proof that
+these reports share a cause. The decision remains unchanged.
+
+Before merging, compare the tenant configuration, input channel, date-field
+instruction, and reported symptom. Different subjects may describe the same
+mechanism; the same subject may describe different mechanisms. Unknown tenant
+context needs investigation rather than automatic merging.
+
+For the exceptional reports, obtain the intended date/time, original calendar
+payload, displayed result, timezone settings, and delivery timestamps. Timezone
+conversion is a hypothesis for some symptoms, not a confirmed common cause.
+Split the investigation when evidence identifies separate defects.
+
+## Evidence and limits
+
+Source files: `reports-4471.json`, the tenant directory, `desk-notes.json`,
+`causes.ts`, `locales.ts`, `CauseTable.svelte`, and `QueueTimeline.svelte`.
+Counts are computed by components from the export. Do not replace the source data
+or edit an accepted decision to make the narrative fit.
+
+This page is signed with a non-personal exercise identifier. Reviewed status
+means the analysis was checked; it does not mean a production fix was verified
+or that the proposed triage policy is an accepted engineering decision.
+
+<RenderStamp {signature} />
