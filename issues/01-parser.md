@@ -38,3 +38,9 @@ Do not merge booking-v3 form-hint reports into this issue merely because their
 subjects or visible date swaps match. This export contains classification logic
 and reports, not the production parser implementation or a verified reproduction.
 The five exceptional reports are explicitly outside this proposed allocation.
+
+## Engineering outcome
+
+Closed as completed based on the course engineering update dated 2026-10-05: parser FIXED, fix(dates): parse dd/mm for eu locales. Not independently reproduced; issue #3 remains unresolved.
+
+Source: https://hq.mega.dev/challenges/what-it-shows#engineering-update

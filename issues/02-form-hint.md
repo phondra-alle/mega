@@ -37,3 +37,9 @@ An app or email report for the same tenant does not establish this form-hint
 problem. Neither a matching subject nor browser locale is sufficient evidence.
 The mechanism is documented by the supplied KB logic; production behavior has
 not been independently reproduced.
+
+## Engineering outcome
+
+Closed as not planned based on the course engineering update dated 2026-10-05: hint WON'T FIX, booking-v3 form retired. Retirement is not a repaired date hint.
+
+Source: https://hq.mega.dev/challenges/what-it-shows#engineering-update

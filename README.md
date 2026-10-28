@@ -51,3 +51,11 @@ third root cause. Counts refer to the 2026-10-04 export, not a live queue.
 
 The original export README, source data, and accepted decision remain intact
 above or in their original paths. The added page uses the course-issued signature, published with the account owner’s approval.
+
+### Engineering outcome after the first submission
+
+The course update marks #4471 closed on 2026-10-05.
+Issue #1 is closed as completed: the course reports the parser fixed.
+Issue #2 is closed as not planned: booking-v3 was retired, not repaired.
+Issue #3 remains open because the update does not explain the five exceptional
+reports. The signed page and real HTML render preserve that distinction.

@@ -21,12 +21,29 @@ Separate the shared-parser path from the booking-v3 form-hint path, and keep the
 flagged exceptions open for investigation. Matching subjects are not enough.
 
 This review describes the export dated 4 October 2026. It does not establish
-the current queue state, a shipped fix, or a production reproduction.
+the current live queue or an independently reproduced production fix.
 The work items below are published proposals, not confirmed production fixes:
 
 - [Parser input interpretation — 374 allocated reports](https://github.com/phondra-alle/mega/issues/1)
 - [booking-v3 form hint — 33 reports](https://github.com/phondra-alle/mega/issues/2)
 - [Unresolved symptoms — 5 reports to investigate](https://github.com/phondra-alle/mega/issues/3)
+
+## Engineering outcome: read the closure reason
+
+After the first submission, the course published an engineering update for
+#4471, marked closed on **5 October 2026**:
+
+| Mechanism | Engineering update | Work-item disposition |
+| --- | --- | --- |
+| Shared parser | FIXED — `fix(dates): parse dd/mm for eu locales` | Issue #1 closed as completed, based on the course's update. |
+| booking-v3 hint | WON'T FIX — `booking-v3 form retired` | Issue #2 closed as not planned: the form was retired, not repaired. |
+| Exceptional reports | No resolution supplied for these symptoms | Issue #3 remains open for investigation. |
+
+Source: [engineering update on the Challenge page](https://hq.mega.dev/challenges/what-it-shows#engineering-update).
+The earlier export and counts below are retained as a historical snapshot.
+The course's closure is evidence of its reported disposition, not an independent
+test of production behavior. The parser fix must not silently close the exceptional
+reports, and retiring a form must not be described as fixing its date hint.
 
 ## Count reports once, then inspect their meaning
 
