@@ -2,11 +2,12 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import { createServer } from 'vite';
+import { deskRef } from './src/lib/kb/desk-ref.ts';
 
 // Render the real .svx page and its imported components; do not hand-copy tables.
 const server = await createServer({ server: { middlewareMode: true, hmr: false, ws: false } });
 try {
-  const { default: Page } = await server.ssrLoadModule(
+  const { default: Page, metadata } = await server.ssrLoadModule(
     '/src/routes/kb/incidents/4471-review/+page.svx',
   );
   const { render } = await server.ssrLoadModule('svelte/server');
@@ -19,7 +20,8 @@ try {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ${result.head}<style>${css}</style></head><body>${result.body}</body></html>`;
 
-  for (const expected of ['374', '33', '379', '412', 'DR-S2KB-HMV7', 'R-41236']) {
+  assert(metadata.signature, 'Page must have a signature');
+  for (const expected of ['374', '33', '379', '412', deskRef(metadata.signature), 'R-41236']) {
     assert(html.includes(expected), `Missing rendered evidence: ${expected}`);
   }
   assert(!html.includes('no desk ref:'));

@@ -50,4 +50,4 @@ aside from the parser group, not counted twice. Investigation is not a confirmed
 third root cause. Counts refer to the 2026-10-04 export, not a live queue.
 
 The original export README, source data, and accepted decision remain intact
-above or in their original paths. The added page uses a non-personal signature.
+above or in their original paths. The added page uses the course-issued signature, published with the account owner’s approval.

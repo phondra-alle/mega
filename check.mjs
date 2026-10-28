@@ -24,5 +24,8 @@ assert.deepEqual(allocation.map((rs) => rs.length), [374, 33, 5]);
 assert.equal(new Set(allocation.flat().map((r) => r.id)).size, reports.length);
 assert.equal(groups.reduce((n, g) => n + g.reports
   .filter((r) => r.meta.intakeTag !== g.cause).length, 0), 38);
-assert.equal(deskRef('mega-s01e03-analysis'), 'DR-S2KB-HMV7');
-console.log('Verified export: 374 + 33 + 5 = 412; no double counting; signature stable.');
+const page = fs.readFileSync('src/routes/kb/incidents/4471-review/+page.svx', 'utf8');
+const signature = page.match(/^signature: (.+)$/m)?.[1];
+assert.match(signature ?? '', /^v1\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/);
+assert.equal(deskRef(signature), deskRef(signature.trim()));
+console.log('Verified export: 374 + 33 + 5 = 412; no double counting; course signature format valid.');

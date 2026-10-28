@@ -20,7 +20,7 @@ render, or `/kb/incidents/4471-review` for the client-rendered preview.
 - Source: `src/routes/kb/incidents/4471-review/+page.svx`.
 - Derived table: `src/lib/kb/Review4471.svelte`.
 - Standalone HTML: `rendered/4471-review.html`, generated from real components.
-- Signature is a non-personal exercise identifier.
+- Signature is the course-issued proof, published with the account owner’s approval.
 - Existing source data and accepted decisions remain unchanged.
 
 The standalone page contains inline styles and does not need JavaScript.

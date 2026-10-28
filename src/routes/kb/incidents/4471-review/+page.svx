@@ -4,7 +4,7 @@ title: '#4471 reviewed: two mechanisms and unresolved reports'
 owner: exercise analysis
 status: reviewed
 reviewed: '2026-10-28'
-signature: mega-s01e03-analysis
+signature: v1.eyJzdWIiOiIxNjcxIiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyMDAzMjEsImV4cCI6MTc5MzI4NjcyMX0.HVX7cfTWvuXH12d0sdpwd4KEpRsp5t-Ixrzd3mNh6ZY
 ---
 
 <script>
@@ -94,7 +94,7 @@ Source files: `reports-4471.json`, the tenant directory, `desk-notes.json`,
 Counts are computed by components from the export. Do not replace the source data
 or edit an accepted decision to make the narrative fit.
 
-This page is signed with a non-personal exercise identifier. Reviewed status
+This page carries the course-issued signature linking this work to its course account. Reviewed status
 means the analysis was checked; it does not mean a production fix was verified
 or that the proposed triage policy is an accepted engineering decision.
 
